@@ -1,0 +1,36 @@
+# WordPress
+function myMap() {
+						  var mapCanvas = document.getElementById("map");
+						  var mapOptions = {
+						    center: new google.maps.LatLng(parseFloat(latbot), parseFloat(lngbot)), 
+						    zoom: 10
+						  }
+						  var map = new google.maps.Map(mapCanvas, mapOptions);			
+						  var bounds = new google.maps.LatLngBounds();
+						  var contentString = [];
+						  for(j=0;j<i;j++){	
+							  var myLatlng = {lat:parseFloat(lat[j]),lng:parseFloat(lng[j])};
+							  var marker = new google.maps.Marker({
+								    position: myLatlng,
+								    map: map,
+								    title: title[j]
+							});
+								var ltextent = new google.maps.LatLng(parseFloat(lat[j]),parseFloat(lng[j]));
+							  bounds.extend(ltextent);
+							  map.fitBounds(bounds);
+							contentString.push(
+									"<div class='dud-info'>"+
+									"<h3>"+title[j]+"</h3>"+
+									"<p>"+address[j]+"</p>"+
+									"<p>"+phone[j]+"</p>"+
+									"</div>");						  
+							var infowindow = new google.maps.InfoWindow();
+							 google.maps.event.addListener(marker, 'click', (function(marker, j) {
+							        return function() {
+							          infowindow.setContent(contentString[j]);
+							          infowindow.open(map, marker);
+							        }
+							  })(marker, j));
+							}		  		  			
+						}
+					myMap();
