@@ -146,11 +146,9 @@
 			 });
 		 }
 		//
-		 $('.test').change(function(){
-			 ajax_js();			 
-		 });
-		 $('#search_button').click(function(){
-			 ajax_js();			 
+		$('.form_filtter').bind('change submit',function(){
+				ajax_js();
+			 return false;
 		 });
 		 $('.load_more').click(function(event){
 			 event.preventDefault();//dừng sự kiện khi click .load_more
