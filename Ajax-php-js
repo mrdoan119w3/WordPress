@@ -1,0 +1,30 @@
+# WordPress
+//ajax
+<?php 
+	$content = ob_get_clean();
+	$array = array(
+		'html'		=>	$content,
+		'latbot'	=>	$lat,
+		'lngbot'	=>	$lng,
+		'lat'		=>	$lat_js,
+		'lng'		=>	$lng_js,
+		'title'		=>	$namear,
+		'phone'		=>	$phone_map,
+		'address'	=>	$add_map,
+		'i'			=>	$row,
+	);
+    echo json_encode($array);
+	die();
+}
+?>
+//content
+ success : function (resp){
+  var latbot	=	resp.latbot;
+  var lngbot	=	resp.lngbot;
+  var i		=	resp.i;
+  var lat		=	resp.lat;
+  var	lng		=	resp.lng;
+  var title	= 	resp.title;
+  var phone	= 	resp.phone;
+  var address	= 	resp.address;
+}
