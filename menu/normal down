@@ -1,0 +1,226 @@
+# WordPress
+/********************** HTML MENU ************************/
+/*
+	<div class="respon-menu">
+		<div class="dud-cls"><span></span></div>
+			<div class="menu">
+				<?php 
+					wp_nav_menu(array(
+						'theme_location'	=>	'main_nav',
+						'menu_class'		=>	'boss-menu',
+					));
+				?>
+			</div><!-- menu -->
+	</div><!-- respon-menu -->
+*/
+/********************** End ************************/
+
+/********************** Menu ************************/
+.respon-menu ul.boss-menu li a{
+	font-size: 24px;
+	color:#ee3324;
+	font-family: 'Cooper Black';
+	text-transform: uppercase;
+	text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+}
+.respon-menu ul.boss-menu li{
+	margin-right: 60px;
+	text-align: left;
+	position: relative;
+}
+.respon-menu ul.boss-menu li:last-child{
+	margin-right: 0;
+}
+.respon-menu ul.boss-menu li.current_page_item a,
+.respon-menu ul.boss-menu li:hover>a{
+	color:#ffd400;
+}
+.sub-menu{
+	position: absolute;
+	z-index: 999;
+	background-color: #ffffff;
+	display: block;
+	visibility: hidden;
+    opacity: 0;
+    background-color: #1B141B;
+    top:120%;
+    transition: all 0.3s linear;
+    width:220px;
+    border-top: 2px solid #fff;
+}
+.sub-menu li a{
+	font-size: 18px !important;
+}
+.boss-menu li:hover>.sub-menu{
+	visibility: visible;
+    opacity: 1;
+	top:94%;
+	transition: all 0.3s linear;
+}
+.boss-menu li ul li .sub-menu{
+	top:30px;
+	left:93%;
+	transition: all 0.3s linear;
+}
+.boss-menu li ul li:hover>.sub-menu{
+	visibility: visible;
+    opacity: 1;
+	top:-2px;
+	transition: all 0.3s linear;
+}
+.sub-menu li{
+	float:none;
+	padding: 10px;
+    line-height: 20px;
+    border-top: 1px solid #fff;
+    width:100%;
+}
+.click_opensub_menu{
+	position: absolute;
+    top: 37%;
+    right: -20px;
+    color:#fff;
+}
+.boss-menu li ul li .click_opensub_menu{
+	right: 10px;
+}
+/********************** Responsive Menu ************************/
+	div.dud-cls span{
+		background-color:#dcdcdc;
+		display: inline-block;
+		width: 30px;
+		height: 4px;
+		position: relative;
+		margin-top:13px;
+		transition: all 0.3s linear;
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}
+	div.dud-cls span:before{
+		content:"";
+		display: block;
+		position: absolute;
+		width:30px;
+		height:4px;
+		bottom:12px;
+		background-color: #dcdcdc;
+		transform:rotate(0deg);
+		transition: all 0.3s linear;
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}
+	div.dud-cls span:after{
+		content:"";
+		display: block;
+		position: absolute;
+		width:30px;
+		height:4px;
+		top:12px;
+		background-color: #dcdcdc;
+		transform:rotate(0deg);
+		transition: all 0.3s linear;
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}
+	.dud-menu-show .dud-cls:before{
+		transform:rotate(45deg);
+		margin-bottom: -12px;
+		transition: all 0.3s linear;
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}
+	.dud-menu-show .dud-cls:after{
+		transform:rotate(-45deg);
+		margin-top: -12px;  
+		transition: all 0.3s linear;	
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}	
+	div.dud-cls span{
+		height:0;
+		transition: all 0.3s linear;	
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}
+	div.dud-cls{
+		position: relative;
+		cursor: pointer;
+		width: 30px;
+		height: 30px;
+	}
+	.menu{
+		display: block;
+		position: absolute;
+		background-color: #1b141b;
+		top:100px;
+		z-index: 999;
+		right: 10px;
+		width: 220px;
+		height: auto;	
+		visibility: hidden;
+		opacity:0;
+		transition: all 0.3s linear;
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+	}
+	.dud-menu-show .menu{
+		transition: all 0.3s linear;
+		-moz-transition: all 0.3s linear;
+		-webkit-transition: all 0.3s linear;
+		visibility: visible;
+		opacity:1;	
+		top:65px;	
+	}
+	.dud-menu-show .menu li{
+		border: 1px solid #eae9e9;
+	}
+	.sub-menu {
+	    padding: 0;
+	    width: 100%;
+	    left: 0;
+	    position: relative;
+	    display: none;
+	}
+	.boss-menu li a{
+		display: block;
+	}
+	.boss-menu li ul li ul.sub-menu{
+		top:0;
+		left:0;
+	}
+	.boss-menu li:hover>.sub-menu{
+		top:inherit;
+	}
+	.boss-menu li ul{
+		left:auto !important;
+		margin-left: 0;
+	}
+	.dud-menu-show .menu ul li{
+		float:none;
+		margin-left: 0;
+		line-height: 40px;
+		position: relative;
+		padding: 0 20px 0 10px;
+	}
+	.show-sub-menu>.sub-menu{
+		display: block;
+		visibility: visible;
+    	opacity: 1;
+	}
+	.boss-menu li .click_opensub_menu{
+		right: 7px;
+		top:10px;
+		position: absolute;
+		color:#fff;
+	}
+	ul.boss-menu li .sub-menu li{
+		border:none;
+		border-top:1px solid #eae9e9;
+	}
+	ul.boss-menu li .sub-menu li a{
+		font-size: 14px;
+	}
+	.dud-menu-show ul.boss-menu li{
+		margin-right: 0;
+	}
+	/********************** End ************************/
