@@ -1,0 +1,208 @@
+# WordPress
+/*HTML*/
+<div class="menu_header_wrap">
+	<div class="container">
+		<div class="menu_header">
+			<?php 
+				wp_nav_menu(array(
+					'theme_location'	=>	'main_nav',
+					'menu_class'		=>	'boss_menu',
+				));	
+			?>
+			<div class="button_menu">
+				<i class="fa fa-bars"></i>
+			</div>
+			<div class="over_wrap"></div>
+		</div>
+	</div>
+</div>
+/*End*/
+/*JS*/
+(function($) {
+	$(document).ready(function(){
+		
+		function menu(){
+			$('.button_menu>i').click(function(){
+				$('.menu_header').addClass('openMenu');
+			});
+			$('.over_wrap').click(function(){
+				$('.menu_header').removeClass('openMenu');
+			});
+			$('.boss_menu li.menu-item-has-children').prepend("<i class='fa fa-angle-down click_opensub_menu'></i>");
+			$('.click_opensub_menu').click(function(){
+				parent	=	$(this).parent();
+				if(parent.hasClass('openSubmenu')){
+					parent.removeClass('openSubmenu');
+				}else{
+					parent.addClass('openSubmenu');
+				}
+			});
+		}
+		menu();
+		
+	});
+})(jQuery);
+/*End*/
+/*CSS*/
+.menu_header_wrap{
+	background: #333;
+	width: 100%;
+}
+.menu_header_wrap .container:before,
+.menu_header_wrap .container:after{
+	content:"";
+	display: table;
+}
+.menu_header_wrap .container:after{
+	clear:both;
+}
+.menu_header{
+	float:left;
+}
+.button_menu,
+.over_wrap{
+	display: none;
+}
+.boss_menu>li{
+	line-height: 40px;
+	float:left;
+	padding: 0 10px;
+	position: relative;
+}
+.boss_menu>li> .sub-menu{
+	position: absolute;
+	width:230px;
+	background: #fff;
+	border: 1px solid #eae9e9;
+	visibility: hidden;
+    opacity: 0;
+    left: 0;
+    top: 120%;
+    z-index: 993;
+    transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    border-top: 2px solid #ff0000;
+}
+.boss_menu>li:hover .sub-menu{
+	transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    visibility: visible;
+    opacity: 1;
+    top: 40px;
+}
+.boss_menu>li> .sub-menu li{
+	float:none;
+}
+.boss_menu>li> .sub-menu li a{
+	color:#000;
+	padding: 8px 10px;
+	display: block;
+	line-height: 23px;
+    border-bottom: 1px solid #eae9e9;
+}
+.boss_menu>li> .sub-menu li a:hover{
+	color:#fff;
+	background: #ff0000;
+}
+.boss_menu li a{
+	color:#fff;
+	display: inline-block;
+}
+.boss_menu>li.current-menu-item>a,
+.boss_menu>li>a:hover{
+	color:#db0400;
+}
+/*End*/
+/*Reponsive*/
+@media(max-width:767px){
+	.button_menu{
+		display: block;
+		color:#fff;
+		float: left;
+	    font-size: 25px;
+	    width: 41px;
+	    height: 41px;
+	    line-height: 41px;
+	    text-align: center;
+	    cursor: pointer;
+	    margin: 0;
+	}
+	.boss_menu>li{
+		float:none;
+		border-bottom: 1px solid rgba(0,0,0,0.2);
+		padding: 0;
+	}
+	.boss_menu>li>a{
+		display: block;
+		padding: 0 10px;
+	}
+	.boss_menu>li>i{
+		position: absolute;
+		right:0;
+		top:0;
+		width:40px;
+		height:40px;
+		text-align: center;
+		line-height: 40px;
+		font-size: 25px;
+   	 	color: #fff;
+	}
+	.menu_header .menu-menu-container{
+		position: fixed;
+	    top: 0;
+	    max-width: 250px;
+	    width: 95%;
+	    height: 100%;
+	    overflow-x: hidden;
+	    overflow-y: auto;
+	    background: #303030;
+	    box-shadow: 2px 0 4px rgba(0,0,0,0.32);
+	    -moz-box-shadow: 2px 0 4px rgba(0,0,0,0.32);
+	    -webkit-box-shadow: 2px 0 4px rgba(0,0,0,0.32);
+	    -webkit-transition: -webkit-transform .4s ease;
+	    transition: -webkit-transform .4s ease;
+	    transition: transform .4s ease;
+	    transition: transform .4s ease,-webkit-transform .4s ease;
+	    left: -280px;
+	    padding: 0;
+	    z-index: 999999;
+	}
+	.openMenu .menu-menu-container{
+		-moz-transform: translate3d(280px,0,0);
+	    -webkit-transform: translate3d(280px,0,0);
+	    transform: translate3d(280px,0,0);
+	}
+	.openMenu .over_wrap {
+	    position: fixed;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    background: rgba(0,0,0,0.32);
+	    width: 100%;
+	    height: 100%;
+	    z-index: 99999;
+	    display: block;
+	}
+	.boss_menu>li .sub-menu{
+	    visibility: hidden !important;
+	    opacity: 0 !important;
+	    top:60px !important;
+	    position: relative;
+	    display: none;
+	}
+	.boss_menu li.openSubmenu .sub-menu{
+	    visibility: visible !important;
+	    opacity: 1 !important;
+	    width: 100%;
+	    top:0 !important;
+	    display: block;
+	}
+}
+/*End*/
