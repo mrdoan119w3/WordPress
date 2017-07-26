@@ -1,0 +1,68 @@
+/***Setup function**/
+add_action( 'admin_menu', 'register_my_custom_menu_page' );
+function register_my_custom_menu_page() {
+  // add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+  add_menu_page( 'Theme Setting', 'Theme Setting', 'manage_options', 'menu-2', 'my_custom_menu_page', 'dashicons-welcome-widgets-menus', 30 );
+  add_action( 'admin_init', 'register_my_cool_plugin_settings' );
+}
+function my_custom_menu_page(){  
+	require_once 'inc/admin/custom.php';
+}
+function register_my_cool_plugin_settings() {
+	//register our settings
+	register_setting( 'my-cool-plugin-settings-group', 'new_option_name' );
+}
+/***Setup page**/
+<div class="wrap">
+<h1>Theme Setting</h1>
+
+<form method="post" action="options.php">
+    <?php settings_fields( 'my-cool-plugin-settings-group' ); ?>
+    <?php do_settings_sections( 'my-cool-plugin-settings-group' ); 
+    $arg_vale = wp_parse_args(get_option('new_option_name'),array(
+    	'name'	=>	'',
+    	'id'	=>	'',
+    	'image'	=>	''
+    ));
+    ?> 
+    <table class="form-table">
+        <tr valign="top">
+        <th scope="row">New Option Name</th>
+        <td><input type="text" name="new_option_name[name]" value="<?php echo esc_attr( $arg_vale['name'] ); ?>" /></td>
+        </tr>
+         
+        <tr valign="top">
+        <th scope="row">Some Other Option</th>
+        <td><input type="text" name="new_option_name[id]" value="<?php echo esc_attr( $arg_vale['id'] ); ?>" /></td>
+        </tr>
+        
+        <tr valign="top">
+        <th scope="row">Image</th>
+        <td>
+        <?php
+		wp_enqueue_media();
+		$imgid = intval($arg_vale['image']);
+		?>
+		<div class="svl-upload-image <?php if($imgid):?>has-image<?php endif;?>">
+		<div class="view-has-value">
+		    <input type="hidden" class="clone_delete" name="new_option_name[image]" id="maps_marker_icon" value="<?php echo $imgid;?>"/>
+		    <img src="<?php echo wp_get_attachment_image_url($imgid,'full')?>" class="image_view pins_img"/>
+		    <a href="#" class="svl-delete-image">x</a>
+		</div>
+		<div class="hidden-has-value"><input type="button" class="ireel-upload button" value="<?php _e( 'Select images', 'devvn' )?>" /></div>
+		</div>
+        </td>
+        </tr>
+        
+    </table>
+    
+    <?php submit_button(); ?>
+
+</form>
+</div>
+/***Setup show page**/
+<?php 
+				$new_option_name	=	get_option('new_option_name');
+				$logo				=	$new_option_name['image'];
+			?>
+			<img src="<?php echo wp_get_attachment_image_url($logo,'full')?>"/>
