@@ -1,3 +1,4 @@
+http://www.eyecon.ro/colorpicker/
 /********HTML*******/
 <div id="colorSelector"><div style="background-color: rgb(10, 10, 94);"></div></div>
 /********js*******/
