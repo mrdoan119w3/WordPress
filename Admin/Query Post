@@ -1,0 +1,52 @@
+#querypost
+function sbt_blog_class_category($query){
+	if(is_admin()){
+	    $current_screen = get_current_screen();
+	    $current_user = wp_get_current_user(); 
+	    $current_user_id	=	$current_user->ID;
+	    $term_id	=	get_field('class','user_'.$current_user_id);
+	    
+	    if ( isset( $current_screen->post_type ) && $current_screen->post_type == 'blog-class' && $query->is_main_query()  && $current_user_id!=1) {
+	        if($term_id){     
+		       $query->set( 'tax_query', array(
+		            array(
+		            	'taxonomy' => 'class',
+						'field'    => 'term_id',
+						'terms'    => $term_id,
+		            )
+		       ) );
+	        }else{
+	        	$query->set( 'tax_query', array(
+		            array(
+		            	'taxonomy' => 'class',
+						'field'    => 'term_id',
+						'terms'    => '',
+		            )
+		       ) );
+	        }
+	   }
+	}
+}
+add_action('pre_get_posts','sbt_blog_class_category');
+
+#Save Post
+function set_blog_class($post_id){
+	if(is_admin()){
+	   $current_screen = get_current_screen();
+	   $current_user = wp_get_current_user(); 
+	   $current_user_id	=	$current_user->ID;
+	   $term_id	=	get_field('class','user_'.$current_user_id);
+	   if ( isset( $current_screen->post_type ) && $current_screen->post_type == 'blog-class' && $term_id) {
+	   		
+            if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+                return;
+            }
+            if ( ! current_user_can( 'edit_post', $post_id ) ) {
+                return;
+            }
+
+            wp_set_post_terms( $post_id, $term_id, 'class', false );
+	   }
+	}
+}
+add_action( 'save_post', 'set_blog_class');
