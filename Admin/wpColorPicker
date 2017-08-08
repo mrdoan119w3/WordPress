@@ -32,7 +32,7 @@ function register_my_cool_plugin_settings() {
     	'color'	=>	'',
     ));
     ?> 
-<input type="text" value="#bada55" class="my-color-field" data-default-color="new_option_name[color]" />
+<input type="text" name="new_option_name[color]" value="<?php echo esc_attr( $arg_vale['color'] ); ?>" class="my-color-field" data-default-color="#fff" />
 #js
 jQuery(document).ready(function($){
     $('.my-color-field').wpColorPicker();
