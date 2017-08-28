@@ -50,3 +50,33 @@ function set_blog_class($post_id){
 	}
 }
 add_action( 'save_post', 'set_blog_class');
+/**Media show user**/
+add_action( 'load-upload.php' , 'custom_load_edit' );
+
+function custom_load_edit() {
+	
+	add_action( 'pre_get_posts' , 'custom_pre_get_posts' );
+	
+}
+
+function custom_pre_get_posts( $query  ) {
+	
+	$query->set( 'author' , get_current_user_id() );
+	
+}
+
+add_action( 'ajax_query_attachments_args' , 'custom_ajax_query_attachments_args' );
+
+function custom_ajax_query_attachments_args( $query ) {
+	
+	if( $query['post_type'] != 'attachment' ) {
+		
+		return $query;
+		
+	}
+
+	$query['author'] = get_current_user_id();
+	
+	return $query;
+	
+}
