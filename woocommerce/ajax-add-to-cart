@@ -1,0 +1,4 @@
+//Update add to cart
+$('body').bind('wc_cart_button_updated', function(){
+		$('body .ajax_add_to_cart.added').html('Đã mua');
+});
