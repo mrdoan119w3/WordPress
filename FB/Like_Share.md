@@ -19,7 +19,7 @@ function og_share($args=array(),$post = null){
 	<div class="og-share clearfix">
 <ul>
 	<?php foreach ($args as $key=>$social) {?>
-	<li class="<?php echo $social;?>"><a target="_blank" href="<?php echo $defaults[$social]['link'];?>"><?php echo $defaults[$social]['icon']?></a></li>
+	<li class="<?php echo $social;?>"><a onclick="window.open(this.href, 'mywin','left=50,top=50,width=600,height=350,toolbar=0'); return false;" href="<?php echo $defaults[$social]['link'];?>"><?php echo $defaults[$social]['icon']?></a></li>
 	<?php }?>
 </ul>
 	</div>
