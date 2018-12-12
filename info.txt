@@ -1,0 +1,70 @@
+-	Menu order
+	FTP menu order
+		demo.devvn.com
+		menuorder@levantoan.com
+		KKR[k!q{l)ZL
+	ADMIN
+		http://demo.devvn.com/plugins/devvncp
+		devvn
+		r7bb*vRf2%A$%f!eqS
+
+-	euroappliance.com.vn
+	FTP
+		euroappliance.com.vn
+		euroapp
+		tref.235w.CDSf75641#%
+	Admin
+		admin
+		Fe13pf&Mogvt2seUcyC5*Y3g
+
+-	daphatech.vn
+	FTP
+		daphatech.vn
+		dptech
+		123.ADN.#%#$^*.abc
+	Admin	http://daphatech.vn/godaiphatadmin
+		daiphatadmin
+		(E%ZEMmN!6aqi64ZkQG8s*1T
+
+-	http://dileka.vn
+	FTP
+		dileka.vn
+		dilekavn
+		dlk.123.abc.#$%(*&#$.AGX
+	Admin
+		http://dileka.vn/wp-admin
+		admin_dileka
+		Euf1bqQk8uXJOloYHDGj
+
+-	FTP
+		demo.levantoan.com
+		k3d@demo.levantoan.com
+		2?cK*Org.Ccp
+		http://demo.levantoan.com/k3d/goadmin
+		k3d_admin
+		&)CGb8Vm0@s*noej
+
+-		http://pipe-fitting.com.vn
+	FTP	pipe-fitting.com.vn
+		pipe-fitting@levantoan.com
+		D{_~Lc6FePAQ
+	Backend
+		http://pipe-fitting.com.vn/goadmin
+		pipe_admin
+		Do!nWwY(QyS%9b$Z
+
+-	https://h6.azdigi.com:2083/
+	bantaigi
+	0n9Imr40Tb
+	http://capvirgo.com/goadmin
+	shopadmin
+	DVHoang123@123a
+
+-	http://paroza.com
+	paroza
+	9EReqJwIYm
+
+	Database:	paroza_db
+	Host:	localhost
+	Username:	paroza_un
+	Password:	CDaHiYV0
